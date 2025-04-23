@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Project - Devansh's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            background-color: blueviolet;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: red;
+            font-size: 1.04rem;
+        }
+
+        .main-content {
+            max-width: 80vw;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .project-info {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .project-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: aqua;
+        }
+
+        .project-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .tech-stack h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: aqua;
+        }
+
+        .tech-stack ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tech-stack li {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .input-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: aqua;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: aqua;
+            color: black;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00ced1;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            display: none;
+        }
+
+        .links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .project-link {
+            display: inline-block;
+            background-color: aqua;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: #00ced1;
+        }
+
+        footer {
+            background-color: #0e0e1a;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .footer-rights {
+            text-align: center;
+            color: gray;
+            padding: 12px 0;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+            opacity: 0.95;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">
+                <h2 style="color: white;">DevDataAnalysis</h2>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="https://devanshsharma-git.github.io/Portfolio/" target="_blank">Portfolio</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="project-info">
+            <h1>DevDataAnalysis - Sentiment Analysis Platform</h1>
+            <p>Welcome to DevDataAnalysis! This advanced data science platform leverages Natural Language Processing (NLP) and Machine Learning techniques to perform sentiment analysis on text data. Using sophisticated algorithms and statistical analysis, it can determine the emotional tone of text input, making it invaluable for analyzing customer feedback, social media sentiment, product reviews, and market research data.</p>
+            <div class="links">
+                <a href="https://github.com/DevanshSharma-GIT" class="project-link" target="_blank">GitHub Profile</a>
+                <a href="https://devanshsharma-git.github.io/Portfolio/" class="project-link" target="_blank">Portfolio Website</a>
+            </div>
+        </section>
+
+        <section class="tech-stack">
+            <h2>Technologies & Tools Used</h2>
+            <ul>
+                <li>Python (Data Analysis)</li>
+                <li>Flask Framework</li>
+                <li>NLTK (Natural Language Processing)</li>
+                <li>VADER Sentiment Analysis</li>
+                <li>Pandas (Data Manipulation)</li>
+                <li>NumPy (Numerical Computing)</li>
+                <li>Scikit-learn (Machine Learning)</li>
+                <li>Data Visualization Tools</li>
+                <li>Statistical Analysis</li>
+                <li>Text Preprocessing</li>
+                <li>RESTful API Design</li>
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (Async Data)</li>
+                <li>JSON Data Processing</li>
+            </ul>
+        </section>
+
+        <section class="input-section">
+            <h2>Try It Out!</h2>
+            <textarea id="text-input" placeholder="Enter your text here to analyze its sentiment..."></textarea>
+            <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+            <div id="result" class="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-first">
+                <h3>DevDataAnalysis</h3>
+            </div>
+            <div class="footer-second">
+                <ul>
+                    <li><a href="https://devanshsharma-git.github.io/Portfolio/" target="_blank">Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright ©2024 | All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        window.onload = () => {
+            document.body.classList.add('loaded');
+        };
+
+        async function analyzeSentiment() {
+            const text = document.getElementById('text-input').value;
+            if (!text) {
+                alert('Please enter some text to analyze');
+                return;
+            }
+
+            try {
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text }),
+                });
+
+                const data = await response.json();
+                const resultDiv = document.getElementById('result');
+                
+                if (response.ok) {
+                    const scores = data.scores;
+                    resultDiv.innerHTML = `
+                        <h3 style="color: aqua; margin-bottom: 10px;">Analysis Result:</h3>
+                        <p><strong>Overall Sentiment:</strong> ${data.sentiment}</p>
+                        <p><strong>Positive Score:</strong> ${(scores.pos * 100).toFixed(1)}%</p>
+                        <p><strong>Negative Score:</strong> ${(scores.neg * 100).toFixed(1)}%</p>
+                        <p><strong>Neutral Score:</strong> ${(scores.neu * 100).toFixed(1)}%</p>
+                        <p><strong>Compound Score:</strong> ${scores.compound.toFixed(3)}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p style="color: #ff6b6b;">Error: ${data.error}</p>`;
+                }
+                resultDiv.style.display = 'block';
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<p style="color: #ff6b6b;">An error occurred while analyzing the text.</p>';
+                document.getElementById('result').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html> 
